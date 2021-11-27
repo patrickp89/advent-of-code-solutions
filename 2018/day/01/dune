@@ -1,5 +1,0 @@
-(library
- (name day01)
- (libraries core)
- (inline_tests (deps 2018-01.input))
- (preprocess (pps ppx_expect)))
