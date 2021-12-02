@@ -12,7 +12,7 @@ $ dotnet build
 Download the input files form the AoC website and place them
 in the `src/AoCSolutions.Test` folder. Then run:
 ```bash
-$ dotnet test
+$ dotnet test -l "console;verbosity=detailed"
 ```
 
 > The input files are customized and yours will probably not

@@ -21,11 +21,11 @@ module day03 =
 
   let to_grid_lines (wire_path: string) : (int * int) list =
     let directions = wire_path |> split ','
-    (* map the list of directions ("U3", "R4", ...) to a list of applicable functions: *)
+    // map the list of directions ("U3", "R4", ...) to a list of applicable functions:
     directions
     |> List.ofArray
     |> List.map (fun direction -> (to_direction_function direction))
-    (* then compute the resulting points: *)
+    // ...then compute the resulting points:
     |> List.fold (fun acc dirf -> (calc_point acc.Head dirf)::acc) [(0,0)]
     |> List.rev
 
@@ -39,8 +39,8 @@ module day03 =
     else
       range b a
 
-  (* Computes the points the lie BETWEEN two given points
-    e.g. [(0,1); (0,2); (0,3)] lie between (0,0) and (0,4). *)
+  /// Computes the points the lie BETWEEN two given points
+  ///  e.g. [(0,1); (0,2); (0,3)] lie between (0,0) and (0,4).
   let compute_points_between (x1, y1) (x2, y2) =
     let points =
       if (x1 = x2)
@@ -59,32 +59,48 @@ module day03 =
     |> List.mapi (fun i x -> (i,x)) 
     |> List.partition (fun (i,_) -> (i % 2 = 0))
 
+
   let compute_all_points_on_lines connected_points =
-    (* partition the list of lines {A,B,C,D,E,...} into two separate lists,
-    such that A,C,E,... are in the first and B,D,... are in the second: *)
-    let (evens, odds) = (partition_odd_from_even connected_points)
-    let even_connected_points_count = ((List.length connected_points) % 2 = 0 )
-    let m = ((List.length connected_points) / 2) in
-    (* compute all points that lie on the lines {a->b, c->d, e->f, ...}: *)
-    (* ignore the last point in the list of evens if there is an even number of lines! *)
+    // partition the list of lines {A,B,C,D,E,...} into two separate lists,
+    // such that A,C,E,... are in the first and B,D,... are in the second:
+    let (evens, odds) = partition_odd_from_even connected_points
+    printfn "#even points = %d, #odd points = %d" evens.Length odds.Length
+
+    // is there an even count of of connected points?
+    let even_connected_points_count = (List.length connected_points) % 2 = 0
+    printfn "even_connected_points_count = %b" even_connected_points_count
+
+    let m = ((List.length connected_points) / 2)
+    printfn "#connected_points / 2 = %d" m
+
+    // compute all points that lie on the lines {a->b, c->d, e->f, ...}:
+    // ignore the last point in the list of evens if there is an even number of lines!
     let odds_wi = odds |> List.map (fun (_,x) -> x)
     let l = if even_connected_points_count then m - 1 else m
+    printfn "evens = %A" evens
     let res1 =
-      evens |> List.take l
+      evens
+      |> List.take l
       |> List.mapi (fun i (_,p) -> (compute_points_between p (List.item i odds_wi)))
       |> List.concat
-    (* then compute all points that lie on the lines {b->c, d->e, ...}: *)
-    (* this time ignore the first even (i.e. (0,0))! *)
+    printfn "res1 = %A" res1
+    
+    // then compute all points that lie on the lines {b->c, d->e, ...}:
+    // this time ignore the first even one (i.e. (0,0))!
     let evens_wi = (evens |> List.map (fun (_,x) -> x)).Tail
     let l2 =
       if even_connected_points_count
       then m - 1
-      else m (* TODO: fix this! in the test below, (2,2) is not part of the resulting list! *)
+      else m // TODO: fix this! in the test below, (2,2) is not part of the resulting list!
+    printfn "odds = %A" odds
     let res2 =
-      odds |> List.take l2
+      odds
+      |> List.take l2
       |> List.mapi (fun i (_,p) -> (compute_points_between p (List.item i evens_wi)))
       |> List.concat
+    printfn "res2 = %A" res2
     List.append (List.append connected_points res1) res2
+
 
   let compute_intersections path1 path2 =
     let points1 = compute_all_points_on_lines path1

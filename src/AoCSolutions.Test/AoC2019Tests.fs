@@ -143,6 +143,7 @@ module AoC2019Tests =
       let d = day03.manhatten_distance p1 p2
       Assert.That(d, Is.EqualTo 5)
 
+
     /// Tests the computation of all points on a set
     /// of connected lines:
     [<Test>]
@@ -153,13 +154,17 @@ module AoC2019Tests =
         (0,6); (6,4); (6,5); (6,6); (1,7); (2,7); (3,7); (4,7); (5,7); (3,3); (4,3); (5,3)
       ]
       Assert.That(points1, Is.EqualTo expPoints1)
-      let points2 = day03.compute_all_points_on_lines [(0,0); (0,7); (6,7); (6,3); (2,3); (2,1)]
-      let expPoints2 = [
+      // TODO: let points2 = day03.compute_all_points_on_lines [(2,3); (2,1)]
+      // TODO: let expPoints2 = [(2,3); (2,1); (2,2) ]
+      // TODO: Assert.That(points2, Is.EqualTo expPoints2)
+      let points3 = day03.compute_all_points_on_lines [(0,0); (0,7); (6,7); (6,3); (2,3); (2,1)]
+      let expPoints3 = [
         (0,0); (0,7); (6,7); (6,3); (2,3); (2,1); (0,1); (0,2); (0,3); (0,4); (0,5);
         (0,6); (6,4); (6,5); (6,6); (1,7); (2,7); (3,7); (4,7); (5,7); (3,3); (4,3);
         (5,3)//; (2,2) // TODO: fix: (2,2) is missing?!
       ]
-      Assert.That(points2, Is.EqualTo expPoints2)
+      Assert.That(points3, Is.EqualTo expPoints3)
+
 
     /// Tests the computation of intersections:
     [<Test>]

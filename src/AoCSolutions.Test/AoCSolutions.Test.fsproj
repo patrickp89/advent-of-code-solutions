@@ -10,6 +10,7 @@
   <ItemGroup>
     <Compile Include="AoC2018Tests.fs" />
     <Compile Include="AoC2019Tests.fs" />
+    <Compile Include="AoC2021Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

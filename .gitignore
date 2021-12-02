@@ -1,6 +1,7 @@
 # AOC input files
 src/AoCSolutions.Test/2018/**/*.input
 src/AoCSolutions.Test/2019/**/*.input
+src/AoCSolutions.Test/2021/**/*.input
 
 # Fsharp files
 obj/

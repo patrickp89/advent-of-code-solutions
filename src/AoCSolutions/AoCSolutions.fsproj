@@ -7,10 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="2018/day01.fs" />
-    <Compile Include="2019/day01.fs" />
-    <Compile Include="2019/day02.fs" />
-    <Compile Include="2019/day03.fs" />
+    <Compile Include="2018/*.fs" />
+    <Compile Include="2019/*.fs" />
+    <Compile Include="2021/*.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
 
