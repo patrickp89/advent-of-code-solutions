@@ -10,7 +10,6 @@
     <Compile Include="2018/*.fs" />
     <Compile Include="2019/*.fs" />
     <Compile Include="2021/*.fs" />
-    <Compile Include="Library.fs" />
   </ItemGroup>
 
   <ItemGroup>

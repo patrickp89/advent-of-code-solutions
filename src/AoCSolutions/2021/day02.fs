@@ -25,10 +25,7 @@ module day02 =
     | Forward _ -> true
 
   let isVerticalMovement dir =
-    match dir with
-    | Up _ -> true
-    | Down _ -> true
-    | Forward _ -> false
+    not (isHorizontalMovement dir)
 
   let getDistance dir =
     match dir with
