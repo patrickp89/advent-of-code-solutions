@@ -1,6 +1,6 @@
 namespace AoCSolutions.E2021
 
-module day03 =
+module Day03 =
 
   open System.IO
 

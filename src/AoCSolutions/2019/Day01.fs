@@ -1,6 +1,6 @@
 namespace AoCSolutions.E2019
 
-module day01 =
+module Day01 =
 
   open System.IO
 

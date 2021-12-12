@@ -1,8 +1,8 @@
-namespace AoCSolutions.Test
+namespace AoCSolutions.E2018.Test
 
-module AoC2018Tests =
+module Day01Test =
 
-    open AoCSolutions.E2018.day01
+    open AoCSolutions.E2018.Day01
     open NUnit.Framework
     open System.IO
 
@@ -16,7 +16,7 @@ module AoC2018Tests =
             Path.Combine(
                 TestContext.CurrentContext.TestDirectory,
                 "../../../",
-                @"2018/day/01/2018-01.input"
+                @"2018/inputs/day/01/2018-01.input"
         )
         let lines = File.ReadLines f
         Assert.That(lines |> Seq.isEmpty, Is.EqualTo false)

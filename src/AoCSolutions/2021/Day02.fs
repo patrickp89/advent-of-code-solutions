@@ -1,6 +1,6 @@
 namespace AoCSolutions.E2021
 
-module day02 =
+module Day02 =
 
   open FSharpx.Text.Strings
   open System.IO
